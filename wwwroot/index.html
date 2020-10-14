@@ -1,16 +1,30 @@
-<script type="text/javascript">
-    window.onload = function () {
-        var url = window.location.href;
-        if (url.indexOf("index.html") >= 0) {
-            url = url.replace("index.html", "");
-            redirectPage(url);
-        } else {
-            redirectPage(url);
-        }
-    };
 
-    function redirectPage(baseUrl) {
-        var url = baseUrl + "Index";
-        window.location.href = url;
-    };
-</script>
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titel der Seite | Name der Website</title>
+  </head>
+  <body>
+    <!-- Sichtbarer Dokumentinhalt im body -->
+    <p>Sehen Sie sich den Quellcode dieser Seite an.
+      <kbd>(Kontextmenu: Seitenquelltext anzeigen)</kbd></p>
+      <!-- <script type="text/javascript">
+        window.onload = function () {
+            var url = window.location.href;
+            if (url.indexOf("index.html") >= 0) {
+                url = url.replace("index.html", "");
+                redirectPage(url);
+            } else {
+                redirectPage(url);
+            }
+        };
+    
+        function redirectPage(baseUrl) {
+            var url = baseUrl + "Index";
+            window.location.href = url;
+        };
+    </script> -->
+  </body>
+</html>
