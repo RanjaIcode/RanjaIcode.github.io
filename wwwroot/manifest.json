@@ -1,0 +1,25 @@
+{    
+  "name": "PWA_Demo",    
+  "short_name": "PWA",    
+  "description": "Demo PWA application",    
+  "icons": [
+    {
+      "src": "/img/logo_192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/img/logo_512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }   
+  ],   
+  "dir": "ltr",
+  "lang": "en-us", 
+  "theme_color": "#006500",
+  "background_color": "#FF0450",
+  "start_url": "/",
+  "scope": "/",
+  "display": "fullscreen",
+	"orientation": "portrait-primary"
+}   
