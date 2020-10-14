@@ -1,18 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titel der Seite | Name der Website</title>
 
-      <script type="text/javascript">
-        window.onload = function () {
-            var url = window.location.href;
-            if (url.indexOf("index.html") >= 0) {
-                url = url.replace("index.html", "");
-                redirectPage(url);
-            } else {
-                redirectPage(url);
-            }
-        };
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+    asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+    crossorigin="anonymous"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+
+
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel='manifest' href="~/manifest.json">
+        <link rel="icon" type="image/x-icon" href="/img/logo_192.png">
+  </head>
+  <body>
+
+    <div class="text-center box">
+        <!-- Install button, hidden by default -->
+        <div id="installContainer" class="hidden">
+            <div class="breakS"></div>
+            <button class="btn btnmode" id="butInstall" type="button">APP INSTALLIEREN</button>
+        </div>    
+        <p>Werden A2HS und beforinstallprompt von diesem Browser unterstützt, ist hier der Button zu Installation zu sehen.</p>
+    </div>
     
-        function redirectPage(baseUrl) {
-            var url = baseUrl + "Index";
-            window.location.href = url;
-        };
-    </script>
-
+    
+    <div class="text-center box">
+        <div class="breakS"></div>
+        <button class="btn btnmode" id="addLocation" type="button">TRY IT</button>
+        <p>Wird dem Browser die Berechtigung erteilt, kann hier der Standort als Koordinaten dargestellt werden.</p>
+        <p class="hidden" id="demo"></p>  
+    </div>
+    
+    <div class="text-center box">
+        <img src="/img/logo_512.png" alt="Cache Test" class="cacheIMG">
+        <button class="btn btnmode cacheObj" type="submit">Cache</button>
+        <div class="breakS"></div>
+        <p>Dieses Bild ist nicht im cache durch klicken des Buttons kann es im Cache gespeichert werden und offline geladen werden.</p>
+    </div>
+    
+    
+    <div class="text-center box">
+               <p>Wählen Sie Dateien aus. Von Bildern werden Vorschaubilder erzeugt.</p>
+        
+        <form class="form" id="Uploadform"></form>
+        <input type="file"	id="files" name="files[]" multiple />
+        <button class="btn btnmode hidden" id="fupload" type="submit">Upload</button>
+        
+        <div class="progressbar" id="progressBar">
+            <div class="progressbar-fill">
+                <span class="progressbartext">0%</span>
+            </div>
+        </div>
+        <output id="dateiListe"></output>
+        <output id="list"></output>
+        <p>Hier kann auf das Filesystem zugegriffen werden. Dies ist mittels HTML5 möglich</p>
+    </div>
+    <script src="~/js/pwa_installBtn.js"></script>    
+    <script src="~/js/site.js"></script>
+    <script src="pwa_sw.js" defer></script>
+  
+    </body>
+</html>
