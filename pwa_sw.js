@@ -21,7 +21,8 @@ if ("serviceWorker" in navigator) {
                             "lib/bootstrap/dist/css/bootstrap.css",
                             "lib/jquery/dist/jquery.js",
                             "lib/bootstrap/dist/js/bootstrap.bundle.js",
-                            "js/site.js"
+                            "js/site.js",
+                            "index.html"
                           ];
 
   self.addEventListener('install', function(event){

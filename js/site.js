@@ -31,7 +31,7 @@ function displayNotification() {
 displayNotification();
 
 
-//  Foreground detection
+// //  Foreground detection
 var target = document.getElementById('target');
 
 var hidden, visibilityChange;
@@ -61,7 +61,7 @@ function handleVisibilityChange() {
 document.addEventListener(visibilityChange, handleVisibilityChange, false);
 
 if (hidden in document) {
-  document.getElementById('status').innerHTML = document[hidden] ? 'hidden' : 'visible';
+  document.getElementById('status').innerHTML = document[hidden] ? 'hidden' : 'visible';}
 
 // LOCATION
   $("#addLocation").click(function(){
