@@ -23,7 +23,8 @@ if ("serviceWorker" in navigator) {
                             "lib/bootstrap/dist/js/bootstrap.bundle.js",
                             "js/site.js",
                             "index.html",
-                            "/"
+                            "/",
+                            "offline.html"
                           ];
 
   self.addEventListener('install', function(event){
