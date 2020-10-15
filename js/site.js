@@ -66,13 +66,11 @@ if (hidden in document) {
   document.getElementById('status').innerHTML = document[hidden] ? 'hidden' : 'visible';}
 
 // LOCATION
-  $("#addLocation").click(function(){
 
-    $("#demo").toggleClass("hidden");
 
     getLocation();
 
-})
+
 
 function getLocation() {
     var x = document.getElementById("demo");
