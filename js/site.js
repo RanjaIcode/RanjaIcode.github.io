@@ -1,7 +1,7 @@
 var dateien;
 $(function ()
 { 
-  $(".btnmode").style.background("green");
+  $(".btnmode").css("color", "green");
 
   // Notifications
   Notification.requestPermission(function(status) {
