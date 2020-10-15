@@ -15,15 +15,13 @@ if ("serviceWorker" in navigator) {
 
                             /*  Offline Cache  */
   const CACHE = "v1";
-  const offline_content =[ "/img/logo_192.png", 
-                            "/",
-                            "/Offline",
-                            "/css/site.css",
+  const offline_content =[ "img/logo_192.png", 
+                            "css/site.css",
                             "manifest.json",
-                            "/lib/bootstrap/dist/css/bootstrap.css",
-                            "/lib/jquery/dist/jquery.js",
-                            "/lib/bootstrap/dist/js/bootstrap.bundle.js",
-                            "/js/site.js"
+                            "lib/bootstrap/dist/css/bootstrap.css",
+                            "lib/jquery/dist/jquery.js",
+                            "lib/bootstrap/dist/js/bootstrap.bundle.js",
+                            "js/site.js"
                           ];
 
   self.addEventListener('install', function(event){
