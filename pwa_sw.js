@@ -50,18 +50,18 @@ self.addEventListener('activate', function (event) {
 
 
 // Cache first then Network 
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    // Try the cache
-    caches.match(event.request).then(function(response) {
-      // Fall back to network
-      return response || fetch(event.request);
-    }).catch(function() {
-      // If both fail, show a generic fallback:
-      return caches.match('offline.html');
-    })
-  );
-});
+// self.addEventListener('fetch', function(event) {
+//   event.respondWith(
+//     // Try the cache
+//     caches.match(event.request).then(function(response) {
+//       // Fall back to network
+//       return response || fetch(event.request);
+//     }).catch(function() {
+//       // If both fail, show a generic fallback:
+//       return caches.match('offline.html');
+//     })
+//   );
+// });
 
 
 // Cache first then network and cache response
@@ -79,13 +79,13 @@ self.addEventListener('fetch', function(event) {
 // });
 
 // Network first then cache
-// self.addEventListener('fetch', function(event) {
-//   event.respondWith(
-//     fetch(event.request).catch(function() {
-//       return caches.match(event.request);
-//     })
-//   );
-// });
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    fetch(event.request).catch(function() {
+      return caches.match(event.request);
+    })
+  );
+});
 
 
 
