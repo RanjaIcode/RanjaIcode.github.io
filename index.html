@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | PWA Demo</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-    asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
-    crossorigin="anonymous"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
-
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 
     <link rel="stylesheet" href="css/site.css" />
     <link rel='manifest' href="manifest.json">
@@ -45,6 +40,7 @@
         <p>Hier können PWA und HTML5 Technologien in verschiedenen Browser getestet werden</p>
     </div>
 
+
     <div class="text-center box">
         <!-- Install button, hidden by default -->
         <div id="installContainer" class="hidden">
@@ -54,16 +50,6 @@
         <p>Werden A2HS und beforinstallprompt von diesem Browser unterstützt, ist hier der Button zu Installation zu sehen.</p>
     </div>
     
-    
-    <div class="text-center box">
-        <div class="breakS"></div>
-        <p>Switch the browser tab to see the changes.</p>
-        <p>Initial page visibility was <b id="status">unknown</b>.</p>
-        <div id="target"></div>
-        <p><small>Based on the demo from <a href="https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API" target="_blank" rel="noopener">MDN</a>
-    </div>
-    
-
 
     <div class="text-center box">
         <div class="breakS"></div>
@@ -78,6 +64,15 @@
         <button class="btn btnmode cacheObj" type="submit">Cache</button>
         <div class="breakS"></div>
         <p>Dieses Bild ist nicht im cache durch klicken des Buttons kann es im Cache gespeichert werden und offline geladen werden.</p>
+    </div>
+
+
+    <div class="text-center box">
+        <div class="breakS"></div>
+        <p>Switch the browser tab to see the changes.</p>
+        <p>Initial page visibility was <b id="status">unknown</b>.</p>
+        <div id="target"></div>
+        <p><small>Based on the demo from <a href="https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API" target="_blank" rel="noopener">MDN</a>
     </div>
     
     
@@ -107,18 +102,9 @@
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-    asp-fallback-test="window.jQuery"
-    crossorigin="anonymous"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
-</script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
-    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-    crossorigin="anonymous"
-    integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
-</script>
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
     <script src="js/pwa_installBtn.js"></script>    
     <script src="js/site.js"></script>
     <script src="pwa_sw.js" defer></script>
