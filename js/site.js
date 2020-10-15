@@ -1,6 +1,7 @@
 var dateien;
 $(function ()
 { 
+  // Notifications
   Notification.requestPermission(function(status) {
     console.log('Notification permission status:', status);
 });
@@ -28,7 +29,41 @@ function displayNotification() {
   }
 }
 displayNotification();
-  // LOCATION
+
+
+//  Foreground detection
+var target = document.getElementById('target');
+
+var hidden, visibilityChange;
+if (typeof document.hidden !== "undefined") {
+  hidden = "hidden";
+  visibilityChange = "visibilitychange";
+} else if (typeof document.mozHidden !== "undefined") {
+  hidden = "mozHidden";
+  visibilityChange = "mozvisibilitychange";
+} else if (typeof document.msHidden !== "undefined") {
+  hidden = "msHidden";
+  visibilityChange = "msvisibilitychange";
+} else if (typeof document.webkitHidden !== "undefined") {
+  hidden = "webkitHidden";
+  visibilityChange = "webkitvisibilitychange";
+} else {
+  target.innerText = 'Page Visibility API not supported.';
+}
+
+function handleVisibilityChange() {
+  var timeBadge = new Date().toTimeString().split(' ')[0];
+  var newState = document.createElement('p');
+  newState.innerHTML = '' + timeBadge + ' Page visibility changed to ' + (document[hidden] ? 'hidden' : 'visible') + '.';
+  target.appendChild(newState);
+}
+
+document.addEventListener(visibilityChange, handleVisibilityChange, false);
+
+if (hidden in document) {
+  document.getElementById('status').innerHTML = document[hidden] ? 'hidden' : 'visible';
+
+// LOCATION
   $("#addLocation").click(function(){
 
     $("#demo").toggleClass("hidden");
@@ -81,20 +116,17 @@ function getLocation() {
   
 //   File Upload
 	function dateiauswahl(evt) {
-			dateien = evt.target.files; // FileList object
-            // Auslesen der gespeicherten Dateien durch Schleife
+			dateien = evt.target.files; 
             var fragmente = [];
 			for (var i = 0, f; f = dateien[i]; i++) {
                 fragmente.push('<li><strong>', f.name, '</strong> (', f.type || 'n/a', ') - ',
                    f.size, ' bytes</li>');
-                // nur Bild-Dateien
 				if (!f.type.match('image.*')) {
 					continue;
 				}
 				var reader = new FileReader();
 				reader.onload = (function (theFile) {
 					return function (e) {
-						// erzeuge Thumbnails.
 						var vorschau = document.createElement('img');
 						vorschau.className = 'vorschau';
 						vorschau.src = e.target.result;
@@ -104,7 +136,6 @@ function getLocation() {
                     };
                     
 				})(f);
-				// Bilder als Data URL auslesen.
 				reader.readAsDataURL(f);
             }
             document.getElementById('dateiListe').innerHTML = '<ul>' + fragmente.join('') + '</ul>';
@@ -115,7 +146,6 @@ function getLocation() {
  
  
 		}
-		// Auf neue Auswahl reagieren und gegebenenfalls Funktion dateiauswahl neu ausführen.
         $('#files').on('input', dateiauswahl);
 
        $("#fupload").on("click", uploadfile)
