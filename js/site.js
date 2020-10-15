@@ -148,20 +148,7 @@ function getLocation() {
 		}
         $('#files').on('input', dateiauswahl);
 
-       $("#fupload").on("click", uploadfile)
-
-        function uploadfile(e)
-        {
-            console.log(dateien);
-            const xhr = new XMLHttpRequest();
-            xhr.open("POST", "/api/UploadController");
-            xhr.upload.addEventListener("progress", e =>{console.log(e);
-            });
-
-            xhr.setRequestHeader("Content-Type", ("multipart/form-data"));
-            xhr.send(data);
-        
-        }
+      
 
 })
 
