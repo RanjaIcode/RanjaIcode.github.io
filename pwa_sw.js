@@ -58,7 +58,7 @@ self.addEventListener('fetch', function(event) {
       return response || fetch(event.request);
     }).catch(function() {
       // If both fail, show a generic fallback:
-      return caches.match('/Offline.html');
+      return caches.match('offline.html');
     })
   );
 });
