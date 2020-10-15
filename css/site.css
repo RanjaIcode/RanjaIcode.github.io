@@ -70,7 +70,8 @@ body {
     text-shadow: 2px 2px var(--text-shadow1);
 }
 .btnmode:hover, 
-.btnmode:focus
+.btnmode:focus,
+.btnmode:active
 {
     color: var(--header-colorTxt-hover);
     box-shadow: none;

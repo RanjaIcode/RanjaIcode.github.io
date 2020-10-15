@@ -1,6 +1,8 @@
 var dateien;
 $(function ()
 { 
+  $(".btnmode").style.background("green");
+
   // Notifications
   Notification.requestPermission(function(status) {
     console.log('Notification permission status:', status);
