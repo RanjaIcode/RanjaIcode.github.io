@@ -43,9 +43,10 @@ if ("serviceWorker" in navigator) {
 
 
 self.addEventListener('activate', function (event) {
-    // `claim()` sets this worker as the active worker for all clients that
-    // match the workers scope and triggers an `oncontrollerchange` event for
-    // the clients.
+   console.log{"service worker activated"};
+   caches.open("v1"). then (cache => {
+     chache.keys().then(requests => console.log(requests));
+   });
     return self.clients.claim();
 });
 
