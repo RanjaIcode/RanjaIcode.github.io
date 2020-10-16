@@ -66,7 +66,7 @@ if (hidden in document) {
   document.getElementById('status').innerHTML = document[hidden] ? 'hidden' : 'visible';}
 
 // LOCATION
-
+$("#loc").on("click", getLocation);
 var x = document.getElementById("demo");
 
 function getLocation() {
