@@ -33,7 +33,7 @@
             </div>
         </nav>
     </header>
-
+<div class="base">
 
     <div class="text-center box">
            <h1>Willkommen</h1>
@@ -99,49 +99,6 @@ function showError(error) {
         <p>Dieses Bild ist nicht im cache durch klicken des Buttons kann es im Cache gespeichert werden und offline geladen werden.</p>
     </div>
 
-
-    <div class="text-center box">
-        <div class="breakS"></div>
-        <p>Browser Tab wechseln um Veränderung zu sehen.</p>
-        <p>Ursprünglisher Status <b id="status">unknown</b>.</p>
-        <div id="target"></div>
-    </div>
-    <script>
-        // //  Foreground detection
-var target = document.getElementById('target');
-
-var hidden, visibilityChange;
-if (typeof document.hidden !== "undefined") {
-  hidden = "hidden";
-  visibilityChange = "visibilitychange";
-} else if (typeof document.mozHidden !== "undefined") {
-  hidden = "mozHidden";
-  visibilityChange = "mozvisibilitychange";
-} else if (typeof document.msHidden !== "undefined") {
-  hidden = "msHidden";
-  visibilityChange = "msvisibilitychange";
-} else if (typeof document.webkitHidden !== "undefined") {
-  hidden = "webkitHidden";
-  visibilityChange = "webkitvisibilitychange";
-} else {
-  target.innerText = 'Page Visibility API not supported.';
-}
-
-function handleVisibilityChange() {
-  var timeBadge = new Date().toTimeString().split(' ')[0];
-  var newState = document.createElement('p');
-  newState.innerHTML = '' + timeBadge + ' Sichtbarkeit änderte sich zu' + (document[hidden] ? 'hidden' : 'visible') + '.';
-  target.appendChild(newState);
-}
-
-document.addEventListener(visibilityChange, handleVisibilityChange, false);
-
-if (hidden in document) {
-  document.getElementById('status').innerHTML = document[hidden] ? 'hidden' : 'visible';}
-
-
-
-    </script>
     
     <div class="text-center box">
                <p>Wählen Sie Dateien aus. Von Bildern werden Vorschaubilder erzeugt.</p>
@@ -155,12 +112,12 @@ if (hidden in document) {
         <p>Hier kann auf das Filesystem zugegriffen werden. Dies ist mittels HTML5 möglich</p>
     </div>
 
-<div>
-    <p>Current permission status is <b id="status">unavailable</b>.</p>
+<div class="text-center box" >
+    <p>Status der Berechtigung <b id="status">unavailable</b>.</p>
 
-<p><button onclick="requestPermission()">Request permission</button></p>
-<p><button onclick="nonPersistentNotification()">Non-persistent notification</button></p>
-<p><button onclick="persistentNotification()">Persistent notification</button></p>
+<p><button onclick="requestPermission()">Berechtigung erteilen</button></p>
+<p><button onclick="nonPersistentNotification()">Safari und Andere</button></p>
+<p><button onclick="persistentNotification()">Nur Andere</button></p>
 </div>
 <script>
     var $status = document.getElementById('status');
@@ -171,7 +128,7 @@ if ('Notification' in window) {
 
 function requestPermission() {
   if (!('Notification' in window)) {
-    alert('Notification API not supported!');
+    alert('Notification API nicht unterstützt!');
     return;
   }
   
@@ -182,12 +139,12 @@ function requestPermission() {
 
 function nonPersistentNotification() {
   if (!('Notification' in window)) {
-    alert('Notification API not supported!');
+    alert('Notification API nicht unterstützt!');
     return;
   }
   
   try {
-    var notification = new Notification("Hi there - non-persistent!");
+    var notification = new Notification("Notification die auch in Safari angezeigt wird! - Non persistent notification");
   } catch (err) {
     alert('Notification API error: ' + err);
   }
@@ -201,15 +158,56 @@ function persistentNotification() {
   
   try {
     navigator.serviceWorker.getRegistration()
-      .then((reg) => reg.showNotification("Hi there - persistent!"))
+      .then((reg) => reg.showNotification("Für alle Anderen! Persistent notification    "))
       .catch((err) => alert('Service Worker registration error: ' + err));
   } catch (err) {
     alert('Notification API error: ' + err);
   }
 }
+</script>
+<div class="text-center box">
+    <div class="breakS"></div>
+    <p>Browser Tab wechseln um Veränderung zu sehen.</p>
+    <p>Ursprünglisher Status <b id="statos">unknown</b>.</p>
+    <div id="target"></div>
+</div>
+<script>
+    // //  Foreground detection
+var target = document.getElementById('target');
+
+var hidden, visibilityChange;
+if (typeof document.hidden !== "undefined") {
+hidden = "hidden";
+visibilityChange = "visibilitychange";
+} else if (typeof document.mozHidden !== "undefined") {
+hidden = "mozHidden";
+visibilityChange = "mozvisibilitychange";
+} else if (typeof document.msHidden !== "undefined") {
+hidden = "msHidden";
+visibilityChange = "msvisibilitychange";
+} else if (typeof document.webkitHidden !== "undefined") {
+hidden = "webkitHidden";
+visibilityChange = "webkitvisibilitychange";
+} else {
+target.innerText = 'Page Visibility API not supported.';
+}
+
+function handleVisibilityChange() {
+var timeBadge = new Date().toTimeString().split(' ')[0];
+var newState = document.createElement('p');
+newState.innerHTML = '' + timeBadge + ' Sichtbarkeit änderte sich zu ' + (document[hidden] ? 'hidden' : 'visible') + '.';
+target.appendChild(newState);
+}
+
+document.addEventListener(visibilityChange, handleVisibilityChange, false);
+
+if (hidden in document) {
+document.getElementById('statos').innerHTML = document[hidden] ? 'hidden' : 'visible';}
+
 
 
 </script>
+</div>
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2020 - BA_Test - <a asp-area="" asp-page="/Privacy">Privacy</a>
