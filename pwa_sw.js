@@ -44,13 +44,13 @@ if ("serviceWorker" in navigator) {
 
 self.addEventListener('activate', function (event) {
    console.log("service worker activated");
-   caches.open("v1"). then (function(cache) {
-     cache.keys().then(requests => console.log(requests));
-   });
+   
     return self.clients.claim();
 });
 
-
+caches.open("v1"). then (cache => {
+  cache.keys().then(requests => console.log(requests));
+});
 // Cache first then Network 
 self.addEventListener('fetch', function(event) {
   event.respondWith(
