@@ -53,11 +53,44 @@
 
     <div class="text-center box">
         <div class="breakS"></div>
-        <button class="btn btnmode"id = "loc">Try It</button>
+        <button class="btn btnmode" onclick="getLocation()">Try It</button>
         <p>Wird dem Browser die Berechtigung erteilt, wird hier der Standort als Koordinaten dargestellt.</p>
         <p id="demo"></p>  
     </div>
- 
+ <script>
+    //  Location in extern script not working
+     var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+
+function showError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      x.innerHTML = "User denied the request for Geolocation."
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML = "Location information is unavailable."
+      break;
+    case error.TIMEOUT:
+      x.innerHTML = "The request to get user location timed out."
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML = "An unknown error occurred."
+      break;
+  }
+}
+ </script>
 
     <div class="text-center box">
         <img src="/img/logo_512.png" alt="Cache Test" class="cacheIMG">
@@ -73,7 +106,42 @@
         <p>Ursprünglisher Status <b id="status">unknown</b>.</p>
         <div id="target"></div>
     </div>
-    
+    <script>
+        // //  Foreground detection
+var target = document.getElementById('target');
+
+var hidden, visibilityChange;
+if (typeof document.hidden !== "undefined") {
+  hidden = "hidden";
+  visibilityChange = "visibilitychange";
+} else if (typeof document.mozHidden !== "undefined") {
+  hidden = "mozHidden";
+  visibilityChange = "mozvisibilitychange";
+} else if (typeof document.msHidden !== "undefined") {
+  hidden = "msHidden";
+  visibilityChange = "msvisibilitychange";
+} else if (typeof document.webkitHidden !== "undefined") {
+  hidden = "webkitHidden";
+  visibilityChange = "webkitvisibilitychange";
+} else {
+  target.innerText = 'Page Visibility API not supported.';
+}
+
+function handleVisibilityChange() {
+  var timeBadge = new Date().toTimeString().split(' ')[0];
+  var newState = document.createElement('p');
+  newState.innerHTML = '' + timeBadge + ' Sichtbarkeit änderte sich zu' + (document[hidden] ? 'hidden' : 'visible') + '.';
+  target.appendChild(newState);
+}
+
+document.addEventListener(visibilityChange, handleVisibilityChange, false);
+
+if (hidden in document) {
+  document.getElementById('status').innerHTML = document[hidden] ? 'hidden' : 'visible';}
+
+
+
+    </script>
     
     <div class="text-center box">
                <p>Wählen Sie Dateien aus. Von Bildern werden Vorschaubilder erzeugt.</p>
