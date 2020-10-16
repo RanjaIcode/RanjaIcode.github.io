@@ -115,9 +115,9 @@ function showError(error) {
 <div class="text-center box" >
     <p>Status der Berechtigung <b id="status">unavailable</b>.</p>
 
-<p><button onclick="requestPermission()">Berechtigung erteilen</button></p>
-<p><button onclick="nonPersistentNotification()">Alle</button></p>
-<p><button onclick="persistentNotification()">Nur Chrome</button></p>
+<p><button class="btn btnmode" onclick="requestPermission()">Berechtigung erteilen</button></p>
+<p><button class="btn btnmode" onclick="nonPersistentNotification()">Alle</button></p>
+<p><button class="btn btnmode" onclick="persistentNotification()">Nur Chrome</button></p>
 </div>
 <script>
     var $status = document.getElementById('status');
