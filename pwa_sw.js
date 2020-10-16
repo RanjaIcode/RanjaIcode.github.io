@@ -1,6 +1,11 @@
 if ("serviceWorker" in navigator) {
+  
     if (navigator.serviceWorker.controller) {
-      console.log("active service worker found, no need to register");
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for(let registration of registrations) {
+         registration.unregister()
+       } })
+      console.log("active service worker found and unregistered");
     } else {
       // Register the service worker
       navigator.serviceWorker
