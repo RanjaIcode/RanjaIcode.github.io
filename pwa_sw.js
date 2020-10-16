@@ -43,7 +43,7 @@ if ("serviceWorker" in navigator) {
 
 
 self.addEventListener('activate', function (event) {
-   console.log{"service worker activated"};
+   console.log("service worker activated");
    caches.open("v1"). then (cache => {
      chache.keys().then(requests => console.log(requests));
    });
