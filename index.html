@@ -58,7 +58,9 @@
         <p id="demo"></p>  
     </div>
     <script>
-        function getLocation() {
+var x = document.getElementById("demo");
+
+function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition, showError);
   } else { 
@@ -87,7 +89,6 @@ function showError(error) {
       break;
   }
 }
-  
     </script>
 
     <div class="text-center box">
