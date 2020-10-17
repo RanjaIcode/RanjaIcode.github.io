@@ -50,11 +50,7 @@
         <p>Werden A2HS und beforinstallprompt von diesem Browser unterstützt, ist hier der Button zu Installation zu sehen.</p>
     </div>
     
-    <div class="text-center box">
-      <button class="btn btnmode" id="unregister" type="button">Unregister</button>
-
-   <p>Hier klicken um serviceWorker zu entregistrieren</p>
-    </div>
+  
     <div class="text-center box">
         <div class="breakS"></div>
         <button class="btn btnmode" onclick="getLocation()">Try It</button>
@@ -148,7 +144,7 @@ function nonPersistentNotification() {
   }
   
   try {
-    var notification = new Notification("Notification die auch in Safari angezeigt wird! - Non persistent notification");
+    var notification = new Notification("Notification die in allen Browsern mit Unterstützung angezeigt wird! - Non persistent notification");
   } catch (err) {
     alert('Notification API error: ' + err);
   }
@@ -167,7 +163,8 @@ function persistentNotification() {
         vibrate: [100, 50, 100],
         data: {
           dateOfArrival: Date.now(),
-          primaryKey: 1
+          primaryKey: 1,
+          url: "https://RanjaIcode.github.io"
         },
         actions: [
           {action: 'explore', title: 'Explore this new world',
@@ -177,7 +174,7 @@ function persistentNotification() {
         ]
       };  
     navigator.serviceWorker.getRegistration()
-      .then((reg) => reg.showNotification("Für alle Anderen! Persistent notification", options))
+      .then((reg) => reg.showNotification("In Chrome! Persistent notification", options))
       .catch((err) => alert('Service Worker registration error: ' + err));
   } catch (err) {
     alert('Notification API error: ' + err);
@@ -187,7 +184,7 @@ function persistentNotification() {
 <div class="text-center box">
     <div class="breakS"></div>
     <p>Browser Tab wechseln um Veränderung zu sehen.</p>
-    <p>Ursprünglisher Status <b id="statos">unknown</b>.</p>
+    <p>Ursprünglicher Status <b id="statos">unknown</b>.</p>
     <div id="target"></div>
 </div>
 <script>
