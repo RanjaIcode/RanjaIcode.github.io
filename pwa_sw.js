@@ -68,9 +68,9 @@ self.addEventListener('activate', function (event) {
     return self.clients.claim();
 });
 
-caches.open("v1"). then (cache => {
-  cache.keys().then(requests => console.log(requests));
-});
+// caches.open("v1"). then (cache => {
+//   cache.keys().then(requests => console.log(requests));
+// });
 // Cache first then Network 
 self.addEventListener('fetch', function(event) {
   event.respondWith(
