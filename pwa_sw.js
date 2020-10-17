@@ -1,16 +1,15 @@
 if ("serviceWorker" in navigator) {
-
-      console.log("active service worker found, no need to register");
-    } else {
-      // Register the service worker
-      navigator.serviceWorker
-        .register("pwa_sw.js")
-        .then(function (reg) {
-          console.log("Service worker has been registered for scope: " + reg.scope);
-        }).catch(function(error){
-          console.log("Registration failed" + error);
-        });
-    }
+  if (navigator.serviceWorker.controller) {
+    console.log("active service worker found, no need to register");
+  } else {
+    // Register the service worker
+    navigator.serviceWorker
+      .register("pwa_sw.js")
+      .then(function (reg) {
+        console.log("Service worker has been registered for scope: " + reg.scope);
+      });
+  }
+}
  
 
                             /*  Offline Cache  */
