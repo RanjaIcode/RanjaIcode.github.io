@@ -1,12 +1,35 @@
 if ("serviceWorker" in navigator) {
   if (navigator.serviceWorker.controller) {
     console.log("active service worker found, no need to register");
+    registration.unregister().then(function(boolean) {
+      if (boolean == true)
+      {
+        console.log("unregister is successful");
+      }
+      else{
+        console.log("unregister is successful");
+      }
+      
+    });
   } else {
     // Register the service worker
     navigator.serviceWorker
       .register("pwa_sw.js")
       .then(function (reg) {
-        console.log("Service worker has been registered for scope: " + reg.scope);
+        console.log("Service worker has been registered for scope: " + reg.scope).then(
+          registration.unregister().then(function(boolean) {
+            if (boolean == true)
+            {
+              console.log("unregister is successful");
+            }
+            else{
+              console.log("unregister is successful");
+            }
+            
+          })
+        );
+      }).catch(err => {
+        console.log("registration failed: ", err);
       });
   }
 }
@@ -43,7 +66,16 @@ if ("serviceWorker" in navigator) {
 
 self.addEventListener('activate', function (event) {
    console.log("service worker activated");
-   
+   registration.unregister().then(function(boolean) {
+      if (boolean == true)
+      {
+        console.log("unregister is successful");
+      }
+      else{
+        console.log("unregister is successful");
+      }
+      
+    });
     return self.clients.claim();
 });
 
@@ -88,13 +120,5 @@ self.addEventListener('fetch', function(event) {
 //   );
 // });
 
-$("#unregister").on("click", unregisterS);
-function unregisterS()
-{
-  if (navigator.serviceWorker.controller) {
-    navigator.serviceWorker.getRegistrations().then(function(registrations) {
-  for(let registration of registrations) {
-   registration.unregister().then(console.log("Service Worker unregistered"))
-  }});
-}
-};
+  
+
