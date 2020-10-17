@@ -16,18 +16,7 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker
       .register("pwa_sw.js")
       .then(function (reg) {
-        console.log("Service worker has been registered for scope: " + reg.scope).then(
-          registration.unregister().then(function(boolean) {
-            if (boolean == true)
-            {
-              console.log("unregister is successful");
-            }
-            else{
-              console.log("unregister is successful");
-            }
-            
-          })
-        );
+        console.log("Service worker has been registered for scope: " + reg.scope);
       }).catch(err => {
         console.log("registration failed: ", err);
       });
