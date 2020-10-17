@@ -1,16 +1,7 @@
 if ("serviceWorker" in navigator) {
   if (navigator.serviceWorker.controller) {
     console.log("active service worker found, no need to register");
-    registration.unregister().then(function(boolean) {
-      if (boolean == true)
-      {
-        console.log("unregister is successful");
-      }
-      else{
-        console.log("unregister is successful");
-      }
-      
-    });
+    
   } else {
     // Register the service worker
     navigator.serviceWorker
@@ -55,22 +46,11 @@ if ("serviceWorker" in navigator) {
 
 self.addEventListener('activate', function (event) {
    console.log("service worker activated");
-   registration.unregister().then(function(boolean) {
-      if (boolean == true)
-      {
-        console.log("unregister is successful");
-      }
-      else{
-        console.log("unregister is successful");
-      }
-      
-    });
+   
     return self.clients.claim();
 });
 
-// caches.open("v1"). then (cache => {
-//   cache.keys().then(requests => console.log(requests));
-// });
+
 // Cache first then Network 
 self.addEventListener('fetch', function(event) {
   event.respondWith(
