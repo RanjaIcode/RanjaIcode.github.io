@@ -1,11 +1,6 @@
 if ("serviceWorker" in navigator) {
-  
-    if (navigator.serviceWorker.controller) {
-      navigator.serviceWorker.getRegistrations().then(function(registrations) {
-        for(let registration of registrations) {
-         registration.unregister()
-       } })
-      console.log("active service worker found and unregistered");
+
+      console.log("active service worker found, no need to register");
     } else {
       // Register the service worker
       navigator.serviceWorker
@@ -16,7 +11,7 @@ if ("serviceWorker" in navigator) {
           console.log("Registration failed" + error);
         });
     }
-  }
+ 
 
                             /*  Offline Cache  */
   const CACHE = "v1";
@@ -94,5 +89,13 @@ self.addEventListener('fetch', function(event) {
 //   );
 // });
 
-
-
+$("#unregister").on("click", unregisterS);
+function unregisterS()
+{
+  if (navigator.serviceWorker.controller) {
+    navigator.serviceWorker.getRegistrations().then(function(registrations) {
+  for(let registration of registrations) {
+   registration.unregister().then(console.log("Service Worker unregistered"))
+  }});
+}
+};
