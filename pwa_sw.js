@@ -92,7 +92,7 @@ self.addEventListener('fetch', function(event) {
   
 
 
-  this.scope.addEventListener('notificationclick', (event) => {
+  self.addEventListener('notificationclick', (event) => {
     event.notification.close();
     if (clients.openWindow && event.notification.data.url) {
         event.waitUntil(clients.openWindow(event.notification.data.url));
